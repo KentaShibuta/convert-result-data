@@ -1,29 +1,33 @@
 import discrimination
 import mapping
+import input_data
+import create_new_mesh
+import numpy as np
 
 if __name__ == "__main__":
-    elem_data = [# 要素番号-物理空間における要素の四隅の座標値
-        [[-1, -1],[2, -2],[4, 3],[-2,2]],
-        [[0, 0],[1, 0],[1, 1],[0,1]]
-    ]
-    dot_data = [# グローバル節点番号-節点の座標値
-        [3,2],
-        [3,0],
-        [-2,0],
-        [0,2]
-    ]
 
-    for i in range(4):
+    elem_node_data = input_data.inp()
+    node_val = create_new_mesh.new_mesh()
+
+    #cul_val = np.zeros((int(node_val.shape[0]),2))
+    cul_val = np.zeros((121,2))
+    num = 0
+    #for i in range(int(node_val.shape[0])):
+    for i in range(121):
         flag = -1
-        for j in range(2):
-            flag = discrimination.disc_in_element(elem_data[j],dot_data[i])
+        #for j in range(int(elem_node_data.shape[0])):
+        for j in range(4500):
+            flag = discrimination.disc_in_element(elem_node_data[j],node_val[i])
+            #if i==6:
+            #    print(elem_node_data[j], node_val[i])
             if flag == 1:
-                print("dot is in the element.")
+                
                 # ここで，該当する要素の中で線形補間されていることを利用して，dotでの速度を求める．
-                ans = mapping.map(elem_data[j], dot_data[i])
+                cul_val[i] = mapping.map(elem_node_data[j], node_val[i])
+                
+                print(i)
+                print("in")
+                break
 
-                print(dot_data[i],elem_data[j],ans)
-                flag = -1
-                break  
-            if j == 1:  
-                print("dot is not the element.")
+    np.savetxt('./np_savetxt.csv', cul_val, delimiter=',')
+
