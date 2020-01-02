@@ -30,4 +30,4 @@ if __name__ == "__main__":
                 break
 
     np.savetxt('./np_savetxt.csv', cul_val, delimiter=',')
-
+    
