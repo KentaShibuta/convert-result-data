@@ -1,12 +1,14 @@
 import numpy as np
 
 def inp():
+    # shellで切り出し済みのデータを読み込む
     print('Input node file name >>>>')
-    f_name_node = input().rstrip() # 可視化するファイル名
+    f_name_node = input().rstrip() # 節点値のデータ
 
     print('Input nbool file name >>>>')
-    f_name_nbool = input().rstrip() # 可視化するファイル名
+    f_name_nbool = input().rstrip() # nbool
 
+    # ここまでの処理をpythonの中だけで行いたいよね．
     ############################################
     #elem_node[nelem][4] # 要素番号と節点番号の対応
     #node_data[nnode][2]　
@@ -24,7 +26,7 @@ def inp():
                         skiprows=0,
                         usecols=(1,2)
                         )
-    
+
     nelem = int(elem_node.shape[0])
 
     elem_node_data = np.zeros((nelem,4,2))
@@ -40,4 +42,3 @@ def inp():
     #np.save('./output.txt', elem_node_data)
     #np.savetxt('./np_savetxt.csv', elem_node_data, delimiter=',')
     return elem_node_data
-

@@ -1,6 +1,7 @@
 import numpy as np
 
 def inp_v():
+    # 2回もnboolのデータを読み込みたくない
     print('Input nbool file name >>>>')
     f_name_nbool = input().rstrip() # 可視化するファイル名
 
@@ -25,7 +26,7 @@ def inp_v():
                         usecols=(1,2)
                         )
 
-    
+
     nelem = int(elem_node.shape[0])
 
     elem_node_velocity = np.zeros((nelem,4,2))
@@ -41,4 +42,3 @@ def inp_v():
     #np.save('./output.txt', elem_node_data)
     #np.savetxt('./np_savetxt.csv', elem_node_data, delimiter=',')
     return elem_node_velocity
-
