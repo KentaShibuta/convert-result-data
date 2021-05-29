@@ -16,6 +16,8 @@
 * macOS 10.15.7
 * Python 3.8.5
 * Cython version 0.29.23
+* sympy 1.7.1
+* numpy 1.19.1
 
 ### Cythonのインストール
 * `pip3 install cython`
