@@ -1,13 +1,12 @@
 #!/bin/sh
 rm -rf ./lib
-mkdir ./lib
-cythonize -i ./source/discrimination.pyx lib/
-cythonize -i ./source/mapping.pyx lib/
-cythonize -i ./source/input_data.pyx lib/
-cythonize -i ./source/create_new_mesh.pyx lib/
-cythonize -i ./source/input_v.pyx lib/
+cythonize -i ./source/discrimination.pyx
+cythonize -i ./source/mapping.pyx
+cythonize -i ./source/input_data.pyx
+cythonize -i ./source/create_new_mesh.pyx
+cythonize -i ./source/input_v.pyx
 
-cythonize -i ./source/solver.pyx lib/
+cythonize -i ./source/solver.pyx
 
 mkdir ./lib
 cp ./source/*.c ./lib/
